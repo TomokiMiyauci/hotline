@@ -1,13 +1,22 @@
 <template>
-  <div>
+  <v-app>
+    <the-appbar />
     <v-content>
       <nuxt />
     </v-content>
-  </div>
+    <the-bottom-nav />
+  </v-app>
 </template>
 
 <script>
-export default {}
+import TheAppbar from '~/components/organisms/TheAppbar'
+import TheBottomNav from '~/components/organisms/TheBottomNav'
+export default {
+  components: {
+    TheAppbar,
+    TheBottomNav
+  }
+}
 </script>
 
 <style></style>

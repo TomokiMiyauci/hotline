@@ -1,9 +1,16 @@
 <template>
-  <div />
+  <div>
+    <v-message />
+  </div>
 </template>
 
 <script>
-export default {}
+import VMessage from '~/components/organisms/VMessage'
+export default {
+  components: {
+    VMessage
+  }
+}
 </script>
 
 <style></style>
