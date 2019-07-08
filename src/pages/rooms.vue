@@ -1,27 +1,5 @@
 <template>
-  <div>
-    <v-bottom-navigation v-model="bottomNav" dark shift>
-      <v-btn>
-        <span>Video</span>
-        <v-icon>ondemand_video</v-icon>
-      </v-btn>
-
-      <v-btn>
-        <span>Music</span>
-        <v-icon>music_note</v-icon>
-      </v-btn>
-
-      <v-btn>
-        <span>Book</span>
-        <v-icon>book</v-icon>
-      </v-btn>
-
-      <v-btn>
-        <span>Image</span>
-        <v-icon>image</v-icon>
-      </v-btn>
-    </v-bottom-navigation>
-  </div>
+  <div />
 </template>
 
 <script>
