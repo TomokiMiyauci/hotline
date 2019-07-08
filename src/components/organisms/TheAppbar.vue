@@ -16,9 +16,10 @@
 <script>
 import { mapMutations } from 'vuex'
 export default {
-  data() {
-    return {
-      title: 'Hotline'
+  props: {
+    title: {
+      type: String,
+      default: null
     }
   },
   methods: {

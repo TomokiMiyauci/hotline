@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation color="purple" app>
+  <v-bottom-navigation app fixed>
     <v-flex>
       <v-text-field
         v-model="message"
