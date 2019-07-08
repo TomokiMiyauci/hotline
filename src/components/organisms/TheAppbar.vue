@@ -14,13 +14,10 @@
   </v-app-bar>
 </template>
 <script>
-import { mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
-  props: {
-    title: {
-      type: String,
-      default: null
-    }
+  computed: {
+    ...mapState('navbar', ['title'])
   },
   methods: {
     ...mapMutations('user', ['LOGIN', 'LOGOUT'])
