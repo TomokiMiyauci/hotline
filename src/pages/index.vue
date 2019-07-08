@@ -5,18 +5,16 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mixin } from '~/mixins/navbar'
 import VMessage from '~/components/organisms/VMessage'
 export default {
   components: {
     VMessage
   },
-  created() {
-    this.SET_TITLE('Talk')
-  },
-  methods: {
-    ...mapMutations('navbar', ['SET_TITLE'])
-  }
+  mixins: [mixin],
+  data: () => ({
+    title: 'Talk'
+  })
 }
 </script>
 
