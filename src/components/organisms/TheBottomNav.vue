@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation v-model="bottomNav" dark shift>
+  <v-bottom-navigation v-model="bottomNav" dark shift app fixed>
     <v-btn>
       <span>Video</span>
       <v-icon>ondemand_video</v-icon>
