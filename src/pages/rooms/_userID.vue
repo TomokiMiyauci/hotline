@@ -1,18 +1,20 @@
 <template>
   <div>
-    <v-room-list />
+    <the-message />
   </div>
 </template>
 
 <script>
 import { mixin } from '~/mixins/navbar'
-import VRoomList from '~/components/organisms/VRoomList'
+import TheMessage from '~/components/templates/TheMessage'
 export default {
+  layout: 'talk',
   components: {
-    VRoomList
+    TheMessage
   },
+
   mixins: [mixin],
-  data: () => ({ title: 'room' })
+  data: () => ({ title: 'talk' })
 }
 </script>
 

@@ -1,6 +1,6 @@
-import { GET } from './mutation-types'
+import { POST } from './mutation-types'
 export default {
-  [GET](state, payload) {
+  [POST](state, payload) {
     state.messages.push(payload)
   }
 }

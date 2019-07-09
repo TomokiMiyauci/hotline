@@ -1,26 +1,28 @@
 <template>
-  <v-bottom-navigation app fixed>
-    <v-flex>
-      <v-text-field
-        v-model="message"
-        :append-outer-icon="message ? 'mdi-send' : ''"
-        :prepend-icon="icon"
-        filled
-        rounded
-        clearable
-        label="Message"
-        type="text"
-        @click:append-outer="sendMessage"
-        @click:prepend="changeIcon"
-        @click:clear="clearMessage"
-      />
-    </v-flex>
-  </v-bottom-navigation>
+  <v-text-field
+    v-model="message"
+    :append-outer-icon="message ? 'mdi-send' : ''"
+    :prepend-icon="icon"
+    filled
+    rounded
+    clearable
+    label="Message"
+    type="text"
+    @click:append-outer="sendMessage"
+    @click:prepend="changeIcon"
+    @click:clear="clearMessage"
+  />
 </template>
 
 <script>
 import { mapMutations, mapState } from 'vuex'
 export default {
+  props: {
+    userid: {
+      type: String,
+      required: true
+    }
+  },
   data: () => ({
     message: '',
     iconIndex: 0,
@@ -48,14 +50,14 @@ export default {
   },
 
   methods: {
-    ...mapMutations('message', ['GET']),
+    ...mapMutations('message', ['POST']),
     sendMessage() {
       const msg = {
         timestamp: new Date(),
         text: this.message,
-        userID: this.user
+        userID: this.userid
       }
-      this.GET(msg)
+      this.POST(msg)
       this.resetIcon()
       this.clearMessage()
     },
