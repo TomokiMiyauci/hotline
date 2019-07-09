@@ -1,23 +1,8 @@
 <template>
   <v-bottom-navigation v-model="bottomNav" dark shift app fixed>
-    <v-btn>
-      <span>Video</span>
-      <v-icon>ondemand_video</v-icon>
-    </v-btn>
-
-    <v-btn>
-      <span>Music</span>
-      <v-icon>music_note</v-icon>
-    </v-btn>
-
-    <v-btn>
-      <span>Book</span>
-      <v-icon>book</v-icon>
-    </v-btn>
-
-    <v-btn>
-      <span>Image</span>
-      <v-icon>image</v-icon>
+    <v-btn v-for="item in items" :key="item.title" :to="item.to">
+      <span class="text-capitalize">{{ item.title }}</span>
+      <v-icon>{{ item.icon }}</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </template>
@@ -25,7 +10,11 @@
 <script>
 export default {
   data: () => ({
-    bottomNav: 3
+    bottomNav: null,
+    items: [
+      { title: 'room', icon: 'home', to: '/rooms/' },
+      { title: 'setting', icon: 'settings', to: '/settings/' }
+    ]
   })
 }
 </script>
