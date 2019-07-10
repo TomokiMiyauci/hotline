@@ -4,12 +4,16 @@
     <v-content>
       <nuxt />
     </v-content>
-    <the-bottom-nav />
   </v-app>
 </template>
 
 <script>
-export default {}
+import TheAppbar from '~/components/organisms/TheAppbar'
+export default {
+  components: {
+    TheAppbar
+  }
+}
 </script>
 
 <style></style>

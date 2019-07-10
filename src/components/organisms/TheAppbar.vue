@@ -2,7 +2,9 @@
   <v-app-bar color="red" dark app>
     <v-app-bar-nav-icon />
 
-    <v-toolbar-title>{{ title }}</v-toolbar-title>
+    <v-toolbar-title class="text-capitalize">
+      {{ title }}
+    </v-toolbar-title>
 
     <v-spacer />
     <v-btn icon @click="LOGIN(1)">
