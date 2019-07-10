@@ -2,12 +2,14 @@
   <div>
     <v-container fill-height>
       <v-layout column>
-        <template v-for="(i, index) in item">
+        <template
+          v-for="(message, index) in getMessage(this.$route.params.userID)"
+        >
           <v-own-message
-            v-if="i.userID"
+            v-if="message.userID"
             :key="index"
             :avator="avator"
-            :message="i"
+            :message="message"
           />
           <v-others-message v-else :key="index" :avator="avator" :message="i" />
         </template>
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations, mapState, mapGetters } from 'vuex'
 import VOwnMessage from '~/components/organisms/VOwnMessage'
 import VOthersMessage from '~/components/organisms/VOthersMessage'
 export default {
@@ -51,14 +53,11 @@ export default {
 
   computed: {
     ...mapState('message', ['messages']),
+    ...mapGetters('message', ['getMessage']),
     icon() {
       return this.icons[this.iconIndex]
-    },
-    item() {
-      return this.messages
     }
   },
-
   methods: {
     ...mapMutations('message', ['GET']),
     sendMessage() {

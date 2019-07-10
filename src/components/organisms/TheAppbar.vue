@@ -1,6 +1,6 @@
 <template>
   <v-app-bar color="red" dark app>
-    <v-app-bar-nav-icon />
+    <v-app-bar-nav-icon to="/rooms" />
 
     <v-toolbar-title class="text-capitalize">
       {{ title }}
