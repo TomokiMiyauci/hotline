@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto" flat>
     <v-list three-line>
-      <template v-for="(item, index) in items">
+      <template v-for="(item, index) in i">
         <v-list-item :key="item.title" :to="`/rooms/${item.uuid}`">
           <v-list-item-avatar>
             <v-img :src="item.avatar" />
@@ -18,10 +18,14 @@
   </v-card>
 </template>
 <script>
-import { items } from '~/.mocks/rooms'
+import { mapGetters, mapState } from 'vuex'
 export default {
   computed: {
-    items: () => items
+    ...mapGetters('room', ['getRoom']),
+    ...mapState('user', ['user']),
+    i: function() {
+      return this.getRoom(this.user)
+    }
   }
 }
 </script>

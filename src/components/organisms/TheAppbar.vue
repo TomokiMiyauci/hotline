@@ -7,7 +7,7 @@
     </v-toolbar-title>
 
     <v-spacer />
-    <v-btn icon @click="LOGIN(1)">
+    <v-btn icon @click="LOGIN('1')">
       <v-icon>exit_to_app</v-icon>
     </v-btn>
     <v-btn icon @click="LOGOUT()">

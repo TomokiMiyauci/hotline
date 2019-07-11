@@ -1,5 +1,6 @@
+import { messages } from '~/.mocks/messages'
 export default () => ({
-  messages: []
+  messages: messages
 })
 // message:{
 //   uuid:String,
