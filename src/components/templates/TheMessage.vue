@@ -3,7 +3,7 @@
     <v-message />
     <v-bottom-navigation app fixed>
       <v-flex>
-        <v-post-box :userid="this.$route.params.userID" />
+        <v-post-box :room-id="this.$route.params.roomID" />
       </v-flex>
     </v-bottom-navigation>
   </div>

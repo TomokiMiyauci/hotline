@@ -3,15 +3,20 @@
     <v-container fill-height>
       <v-layout column>
         <template
-          v-for="(message, index) in getMessage(this.$route.params.userID)"
+          v-for="(message, index) in getMessage(this.$route.params.roomID)"
         >
           <v-own-message
-            v-if="message.userID"
+            v-if="message.userID && message.roomID"
             :key="index"
             :avator="avator"
             :message="message"
           />
-          <v-others-message v-else :key="index" :avator="avator" :message="i" />
+          <v-others-message
+            v-else
+            :key="index"
+            :avator="avator"
+            :message="message"
+          />
         </template>
       </v-layout>
     </v-container>
@@ -37,26 +42,13 @@ export default {
       src: 'https://vuetifyjs.com/apple-touch-icon-180x180.png',
       id: 'avatar'
     },
-    message: '',
-    iconIndex: 0,
-    icons: [
-      'mdi-emoticon',
-      'mdi-emoticon-cool',
-      'mdi-emoticon-dead',
-      'mdi-emoticon-excited',
-      'mdi-emoticon-happy',
-      'mdi-emoticon-neutral',
-      'mdi-emoticon-sad',
-      'mdi-emoticon-tongue'
-    ]
+    message: ''
   }),
 
   computed: {
     ...mapState('message', ['messages']),
     ...mapGetters('message', ['getMessage']),
-    icon() {
-      return this.icons[this.iconIndex]
-    }
+    ...mapState('user', ['user'])
   },
   methods: {
     ...mapMutations('message', ['GET']),
@@ -64,17 +56,6 @@ export default {
       this.GET(this.message)
       this.resetIcon()
       this.clearMessage()
-    },
-    clearMessage() {
-      this.message = ''
-    },
-    resetIcon() {
-      this.iconIndex = 0
-    },
-    changeIcon() {
-      this.iconIndex === this.icons.length - 1
-        ? (this.iconIndex = 0)
-        : this.iconIndex++
     }
   }
 }

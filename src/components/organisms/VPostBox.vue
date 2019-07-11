@@ -18,7 +18,7 @@
 import { mapMutations, mapState } from 'vuex'
 export default {
   props: {
-    userid: {
+    roomId: {
       type: String,
       required: true
     }
@@ -43,9 +43,6 @@ export default {
     ...mapState('user', ['user']),
     icon() {
       return this.icons[this.iconIndex]
-    },
-    item() {
-      return this.messages
     }
   },
 
@@ -55,7 +52,8 @@ export default {
       const msg = {
         timestamp: new Date(),
         text: this.message,
-        userID: this.userid
+        roomID: this.roomId,
+        userID: this.user
       }
       this.POST(msg)
       this.resetIcon()
