@@ -7,6 +7,9 @@
     </v-toolbar-title>
 
     <v-spacer />
+    <p v-if="user">
+      Login now
+    </p>
     <v-btn icon @click="LOGIN('1')">
       <v-icon>exit_to_app</v-icon>
     </v-btn>
@@ -19,7 +22,8 @@
 import { mapState, mapMutations } from 'vuex'
 export default {
   computed: {
-    ...mapState('navbar', ['title'])
+    ...mapState('navbar', ['title']),
+    ...mapState('user', ['user'])
   },
   methods: {
     ...mapMutations('user', ['LOGIN', 'LOGOUT'])
