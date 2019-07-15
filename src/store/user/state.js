@@ -1,5 +1,6 @@
+import { users } from '~/.mocks/users'
 export default () => ({
-  user: null
+  users: users
 })
 // user:{
 //   uuid:String,
