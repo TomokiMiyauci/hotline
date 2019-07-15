@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations, mapState, mapActions } from 'vuex'
 export default {
   props: {
     roomId: {
@@ -48,14 +48,13 @@ export default {
 
   methods: {
     ...mapMutations('message', ['POST']),
+    ...mapActions('room', ['POST_MESSAGE']),
     sendMessage() {
       const msg = {
-        timestamp: new Date(),
-        text: this.message,
-        roomID: this.roomId,
-        userID: this.user
+        context: this.message,
+        timestamp: new Date()
       }
-      this.POST(msg)
+      this.POST_MESSAGE(msg)
       this.resetIcon()
       this.clearMessage()
     },

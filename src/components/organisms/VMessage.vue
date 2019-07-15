@@ -2,9 +2,7 @@
   <div>
     <v-container fill-height>
       <v-layout column>
-        <template
-          v-for="(message, index) in getMessage(this.$route.params.roomID)"
-        >
+        <template v-for="(message, index) in room.messages">
           <v-own-message
             v-if="message.userID && message.roomID"
             :key="index"
@@ -24,7 +22,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import VOwnMessage from '~/components/organisms/VOwnMessage'
 import VOthersMessage from '~/components/organisms/VOthersMessage'
 export default {
@@ -32,31 +30,21 @@ export default {
     VOwnMessage,
     VOthersMessage
   },
-  filters: {
-    getHHMM(val) {
-      return val.getHours() + ':' + val.getMinutes()
-    }
-  },
+
   data: () => ({
     avator: {
       src: 'https://vuetifyjs.com/apple-touch-icon-180x180.png',
       id: 'avatar'
-    },
-    message: ''
+    }
   }),
-
   computed: {
-    ...mapState('message', ['messages']),
-    ...mapGetters('message', ['getMessage']),
-    ...mapState('user', ['user'])
+    ...mapState('room', ['room'])
+  },
+  created() {
+    this.GET_MESSAGE()
   },
   methods: {
-    ...mapMutations('message', ['GET']),
-    sendMessage() {
-      this.GET(this.message)
-      this.resetIcon()
-      this.clearMessage()
-    }
+    ...mapActions('room', ['GET_MESSAGE'])
   }
 }
 </script>

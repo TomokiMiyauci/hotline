@@ -1,4 +1,5 @@
 import { rooms } from '~/.mocks/rooms'
 export default () => ({
-  rooms: rooms
+  rooms: rooms,
+  room: []
 })
