@@ -1,15 +1,15 @@
 <template>
   <v-card class="mx-auto" flat>
     <v-list three-line>
-      <template v-for="(item, index) in i">
-        <v-list-item :key="item.title" :to="`/rooms/${item.uuid}`">
+      <template v-for="(item, index) in b">
+        <v-list-item :key="item.title" :to="`/rooms/${item}`">
           <v-list-item-avatar>
-            <v-img :src="item.user[0].avatar" />
+            <!-- <v-img :src="ac" /> -->
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.user[0].name }}</v-list-item-title>
-            <v-list-item-subtitle> {{ item.message }}</v-list-item-subtitle>
+            <v-list-item-title>{{ item }}</v-list-item-title>
+            <v-list-item-subtitle> {{ item }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider :key="index" :inset="item.inset" />
@@ -20,6 +20,11 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 export default {
+  data() {
+    return {
+      b: null
+    }
+  },
   computed: {
     ...mapGetters('room', ['getRoom']),
     ...mapGetters('message', ['getMessage']),
@@ -46,6 +51,24 @@ export default {
         })
       }
       return i
+    },
+    av: function(value) {
+      return value
+    }
+  },
+  async created() {
+    await this.click()
+    console.log(this.b)
+    // this.b.forEach((doc) => console.log(doc))
+  },
+  methods: {
+    async click() {
+      await this.$firestore
+        .collection('users')
+        .doc('CbPg7T1Ljj3PmIj2JuVV')
+        .get()
+        .then((doc) => (this.b = doc.data()))
+        .catch((error) => console.log(error))
     }
   }
 }
